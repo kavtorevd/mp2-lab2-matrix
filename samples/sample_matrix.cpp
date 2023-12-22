@@ -10,21 +10,48 @@
 
 void main()
 {
-  TDynamicMatrix<int> a(5), b(5), c(5);
-  int i, j;
+	setlocale(LC_ALL, "Russian");
+	cout << "Тестирование класс работы с матрицами" << endl;
 
-  setlocale(LC_ALL, "Russian");
-  cout << "Тестирование класс работы с матрицами"
-    << endl;
-  for (i = 0; i < 5; i++)
-    for (j = i; j < 5; j++ )
-    {
-      a[i][j] =  i * 10 + j;
-      b[i][j] = (i * 10 + j) * 100;
-    }
-  c = a + b;
-  cout << "Matrix a = " << endl << a << endl;
-  cout << "Matrix b = " << endl << b << endl;
-  cout << "Matrix c = a + b" << endl << c << endl;
+	size_t size;
+	int sw;
+	cout << "Введите размер матрицы A: ";
+	cin >> size;
+
+	TDynamicMatrix<double> a(size);
+	cout << "Введите элементы матрицы А:" << endl;
+	for (size_t i = 0; i < size; i++)
+		for (size_t j = 0; j < size; j++)
+		{
+			cin >> a[i][j];
+		}
+
+	cout << "Введите размер матрицы B: ";
+	cin >> size;
+	TDynamicMatrix<double> b(size);
+	cout << "Введите элементы матрицы B:" << endl;
+	for (size_t i = 0; i < size; i++)
+		for (size_t j = 0; j < size; j++)
+		{
+			cin >> b[i][j];
+		}
+
+	cout << endl << "1) +\n2) -\n3) *\n";
+	cout << "Введите номер: ";
+	cin >> sw;
+	switch (sw)
+	{
+	case 1:
+		cout << "A + B:" << endl << a + b << endl;
+		break;
+	case 2:
+		cout << "A - B:" << endl << a - b << endl;
+		break;
+	case 3:
+		cout << "A * B:" << endl << a * b << endl;
+		break;
+	default:
+		break;
+	}
 }
 //---------------------------------------------------------------------------
